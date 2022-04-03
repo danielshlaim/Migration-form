@@ -1,0 +1,59 @@
+<h1>Migration form</h1>
+<br>
+<p></p>
+<p></p>
+<br>
+
+
+
+<div>
+  
+
+    <div *ngIf="isSubmitted; then thenBlock else elseBlock"></div>
+
+    <ng-template #thenBlock>
+        <strong>Thanks for filling in the form.</strong>
+        <br>
+        <button (click)="toggleResults()">{{ showResults ? 'Hide Results' : 'Show Results'}}</button>
+        <div *ngIf="showResults">
+          <p> Total points {{points}} </p> 
+          <p>{{ points >= 25 ? ' Congratulations you got enough points to continue' : 'not enough to continue' }}</p>
+        </div>
+    </ng-template>
+    <ng-template #elseBlock>  
+        <form #immigrationPoints= "ngForm" (submit)="handleSubmit(immigrationPoints.value)" >
+        <p>
+            <label for="age" >How Old Are You? </label>  
+            <br>  
+            <input type="radio" ngModel name="age"  value="5"> 18-25
+            <br>
+            <input type="radio" ngModel name="age"  value="15"> 26-45
+            <br>
+            <input type="radio" ngModel name="age"  value="10"> 46-99
+        </p>
+        <p>
+            <label for="status"> What Is Your Status?</label>
+            <br>
+            <input type="radio" ngModel name="status" value="10" > Single
+            <br>
+            <input type="radio" ngModel name="status" value="15" > Married
+            <br>
+            <input type="radio" ngModel name="status" value="5" > Divorcee
+            
+        </p>
+        <p>
+            <label for="kids">Do You Have Kids? </label>
+              <br>
+              <input type="radio" ngModel name="kids" value="10" > none
+              <br>
+              <input type="radio" ngModel name="kids" value="15" > 1-2
+              <br>
+              <input type="radio" ngModel name="kids" value="20" > 2-5
+        </p>
+        
+        <button type="submit">Send</button>
+    </form>
+     </ng-template>
+    
+    
+</div>
