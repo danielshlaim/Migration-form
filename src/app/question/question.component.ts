@@ -11,10 +11,12 @@ import { Details } from '../interface/interface';
 export class QuestionComponent implements OnInit {
 
   
-  person:Details = {firstname:'',lastname:'',age:0,status:'',kids:''}
+  person:Details = {age:0,status:'',kids:''}
   points:number = 0;
   isSubmitted: boolean = false
   showResults: boolean = false
+  submitObj:{} = {};
+  
 
   constructor() { }
 
@@ -23,6 +25,7 @@ export class QuestionComponent implements OnInit {
 
   
   handleSubmit(info:any){
+    this.submitObj = info,
     this.person.age = info.age,
     this.person.status = info.status,
     this.person.kids = info.kids
@@ -34,6 +37,9 @@ export class QuestionComponent implements OnInit {
   }
   toggleResults() {
     this.showResults = !this.showResults;
+  }
+  handleReset(){
+   this.isSubmitted = !this.isSubmitted;
   }
 
 
