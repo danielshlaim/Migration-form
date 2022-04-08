@@ -15,7 +15,9 @@
         <div *ngIf="showResults">
             <p class="btn btn-dark" >  <span style="color: cornflowerblue;"> Total points </span> {{points}} </p>
             <p>{{ points >= 25 ? ' Congratulations you got enough points to continue 😎' : 'not enough to continue 😔' }}</p>
-            <button class=" btn btn-dark " (click)="handleReset()">  <span style="color:cornflowerblue ;" >return </span> </button>
+            <button class=" btn btn-dark " (click)="handleReset()">  <span style="color:cornflowerblue ;" >return </span> </button><br>
+            <br>
+            <button class="btn btn-dark"  (click)="handleSave()" > <span style="color:cornflowerblue ;"> Save Results </span></button>
         </div>
     </ng-template>
     <ng-template #elseBlock>

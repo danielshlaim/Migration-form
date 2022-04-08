@@ -15,17 +15,21 @@ export class QuestionComponent implements OnInit {
   points:number = 0;
   isSubmitted: boolean = false
   showResults: boolean = false
-  submitObj:{} = {};
-  
+ 
+  readonly Person_Key = 'Person'
 
   constructor() { }
 
   ngOnInit(): void {
+    let savePerson = localStorage.getItem(this.Person_Key);
+    if(savePerson != null){
+      this.person = JSON.parse(savePerson);
+    }
   }
 
   
   handleSubmit(info:any){
-    this.submitObj = info,
+ 
     this.person.age = info.age,
     this.person.status = info.status,
     this.person.kids = info.kids
@@ -42,5 +46,8 @@ export class QuestionComponent implements OnInit {
    this.isSubmitted = !this.isSubmitted;
   }
 
+  handleSave():void{
+      localStorage.setItem(this.Person_Key,JSON.stringify(this.person))
+  }
 
 }
